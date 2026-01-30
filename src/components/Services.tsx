@@ -14,6 +14,12 @@ const Services = () => {
             delay: "0ms"
         },
         {
+            title: "Chatbots con IA",
+            description: "Asistentes virtuales inteligentes que entienden el contexto y resuelven consultas complejas automáticamente.",
+            image: supportImg, // Reusing support image as placeholder/relevant image
+            delay: "50ms"
+        },
+        {
             title: "Ventas y Lead Nurturing",
             description: "Identifica prospectos, califica leads y personaliza ofertas para maximizar tus conversiones y cerrar más ventas.",
             image: salesImg,

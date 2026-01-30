@@ -30,23 +30,23 @@ const Hero = () => {
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in [animation-delay:600ms]">
-                    <button className="group relative w-64 h-14 bg-white text-brand-dark rounded-full font-bold text-lg transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] overflow-hidden">
+                    <a href="#quiz" className="group relative w-64 h-14 bg-white text-brand-dark rounded-full font-bold text-lg transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] overflow-hidden block text-center leading-[3.5rem]">
                         <span className="absolute inset-0 flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-full">
                             Descubre tu Agente
                         </span>
                         <span className="absolute inset-0 flex items-center justify-center translate-y-full transition-transform duration-300 group-hover:translate-y-0 text-brand-purple">
                             Configurar mi IA <ArrowRight className="ml-2 w-5 h-5" />
                         </span>
-                    </button>
+                    </a>
 
-                    <button className="group relative w-64 h-14 bg-white/5 border border-white/10 text-white rounded-full font-bold text-lg hover:bg-white/10 transition-all hover:scale-105 backdrop-blur-md overflow-hidden">
+                    <a href="#demo" className="group relative w-64 h-14 bg-white/5 border border-white/10 text-white rounded-full font-bold text-lg hover:bg-white/10 transition-all hover:scale-105 backdrop-blur-md overflow-hidden block text-center leading-[3.5rem]">
                         <span className="absolute inset-0 flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-full">
                             Ver Demo en Vivo
                         </span>
                         <span className="absolute inset-0 flex items-center justify-center translate-y-full transition-transform duration-300 group-hover:translate-y-0 text-brand-cyan">
                             Entrar al Sandbox ⚡
                         </span>
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>

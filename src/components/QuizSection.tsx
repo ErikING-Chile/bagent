@@ -30,7 +30,7 @@ const QuizSection = () => {
     };
 
     return (
-        <section className="py-24 bg-brand-dark relative overflow-hidden">
+        <section id="quiz" className="py-24 bg-brand-dark relative overflow-hidden">
             {/* Background elements */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-brand-purple/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-cyan/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
@@ -75,8 +75,8 @@ const QuizSection = () => {
                                             key={option.id}
                                             onClick={() => handleChallengeSelect(option.text)}
                                             className={`p-6 rounded-xl border text-left transition-all flex items-center gap-4 group ${answers.challenge === option.text
-                                                    ? 'bg-brand-purple/20 border-brand-purple text-white shadow-[0_0_20px_rgba(168,85,247,0.2)]'
-                                                    : 'bg-white/5 border-white/10 text-gray-300 hover:bg-white/10 hover:border-white/30'
+                                                ? 'bg-brand-purple/20 border-brand-purple text-white shadow-[0_0_20px_rgba(168,85,247,0.2)]'
+                                                : 'bg-white/5 border-white/10 text-gray-300 hover:bg-white/10 hover:border-white/30'
                                                 }`}
                                         >
                                             <div className={`p-3 rounded-lg ${answers.challenge === option.text ? 'bg-brand-purple text-white' : 'bg-white/10 text-gray-400 group-hover:text-white'}`}>
@@ -111,8 +111,8 @@ const QuizSection = () => {
                                             key={option.id}
                                             onClick={() => handleChannelToggle(option.text)}
                                             className={`px-6 py-4 rounded-full border transition-all flex items-center gap-3 ${answers.channels.includes(option.text)
-                                                    ? 'bg-brand-cyan/20 border-brand-cyan text-white shadow-[0_0_15px_rgba(6,182,212,0.3)]'
-                                                    : 'bg-white/5 border-white/10 text-gray-300 hover:bg-white/10'
+                                                ? 'bg-brand-cyan/20 border-brand-cyan text-white shadow-[0_0_15px_rgba(6,182,212,0.3)]'
+                                                : 'bg-white/5 border-white/10 text-gray-300 hover:bg-white/10'
                                                 }`}
                                         >
                                             <option.icon className="w-5 h-5" />
