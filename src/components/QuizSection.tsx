@@ -138,27 +138,64 @@ const QuizSection = () => {
                                 key="step3"
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                className="w-full text-center"
+                                className="w-full"
                             >
-                                <div className="inline-flex p-4 rounded-full bg-green-500/20 text-green-400 mb-6">
-                                    <Check className="w-12 h-12" />
-                                </div>
-                                <h3 className="text-3xl font-bold text-white mb-2">
-                                    Agente BAGENT-X Activado
-                                </h3>
-                                <p className="text-brand-purple font-medium mb-8">
-                                    Configuración optimizada para {answers.channels.join(" + ")}
-                                </p>
-
-                                <div className="bg-white/5 border border-white/10 rounded-2xl p-8 max-w-2xl mx-auto mb-10">
-                                    <p className="text-xl text-gray-200 leading-relaxed">
-                                        "Basado en tus respuestas, este agente puede <span className="text-brand-cyan font-bold">reducir tu carga operativa en un 60%</span> en los primeros 30 días. Su motor está optimizado para resolver <span className="text-white font-bold">{answers.challenge.toLowerCase()}</span>"
+                                <div className="text-center mb-8">
+                                    <div className="inline-flex p-3 rounded-full bg-green-500/20 text-green-400 mb-4">
+                                        <Check className="w-8 h-8" />
+                                    </div>
+                                    <h3 className="text-3xl font-bold text-white mb-2">
+                                        ¡Agente Compatible Encontrado!
+                                    </h3>
+                                    <p className="text-gray-400">
+                                        Hemos diseñado una estrategia para resolver <span className="text-white font-bold">{answers.challenge.toLowerCase()}</span> vía <span className="text-brand-cyan font-bold">{answers.channels.join(" + ")}</span>.
                                     </p>
                                 </div>
 
-                                <button className="px-10 py-4 bg-white text-brand-dark rounded-full font-bold text-lg hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] transition-all hover:scale-105">
-                                    Solicitar Demo de este Agente
-                                </button>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    {/* Path 1: Lead Capture */}
+                                    <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+                                        <div className="mb-6">
+                                            <h4 className="text-xl font-bold text-white mb-1">Recibir Propuesta & Diagnóstico</h4>
+                                            <p className="text-sm text-gray-400">Te enviaremos el plan de implementación detallado.</p>
+                                        </div>
+
+                                        <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                                            <div>
+                                                <input type="text" placeholder="Nombre completo" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-purple transition-colors" />
+                                            </div>
+                                            <div>
+                                                <input type="email" placeholder="Correo corporativo" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-purple transition-colors" />
+                                            </div>
+                                            <div>
+                                                <input type="text" placeholder="Empresa" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-purple transition-colors" />
+                                            </div>
+                                            <button className="w-full bg-gradient-to-r from-brand-purple to-brand-cyan text-white font-bold py-3 rounded-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all hover:scale-[1.02]">
+                                                Recibir mi Diagnóstico
+                                            </button>
+                                        </form>
+                                    </div>
+
+                                    {/* Path 2: Fast Action */}
+                                    <div className="bg-gradient-to-br from-brand-purple/10 to-brand-cyan/10 border border-white/10 rounded-2xl p-6 flex flex-col justify-center text-center">
+                                        <div className="mb-8">
+                                            <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-cyan">
+                                                <Zap className="w-8 h-8" />
+                                            </div>
+                                            <h4 className="text-xl font-bold text-white mb-2">¿Prefieres Acción Inmediata?</h4>
+                                            <p className="text-sm text-gray-400">Habla ahora con un especialista en automatización.</p>
+                                        </div>
+
+                                        <div className="space-y-3">
+                                            <button className="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3 rounded-lg transition-all flex items-center justify-center gap-2">
+                                                <MessageSquare className="w-5 h-5" /> Hablar por WhatsApp
+                                            </button>
+                                            <button className="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium py-3 rounded-lg transition-all">
+                                                Agendar 15 min
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </motion.div>
                         )}
                     </AnimatePresence>
