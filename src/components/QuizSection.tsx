@@ -187,9 +187,14 @@ const QuizSection = () => {
                                         </div>
 
                                         <div className="space-y-3">
-                                            <button className="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3 rounded-lg transition-all flex items-center justify-center gap-2">
+                                            <a
+                                                href="https://wa.me/56942138814"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3 rounded-lg transition-all flex items-center justify-center gap-2"
+                                            >
                                                 <MessageSquare className="w-5 h-5" /> Hablar por WhatsApp
-                                            </button>
+                                            </a>
                                             <button className="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium py-3 rounded-lg transition-all">
                                                 Agendar 15 min
                                             </button>

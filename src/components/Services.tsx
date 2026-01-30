@@ -11,31 +11,36 @@ const Services = () => {
             title: "Atención al Cliente 24/7",
             description: "Resolución instantánea, soporte multicanal y experiencia personalizada para tus clientes, disponible siempre.",
             image: supportImg,
-            delay: "0ms"
+            delay: "0ms",
+            href: "https://wa.me/56942138814"
         },
         {
             title: "Chatbots con IA",
             description: "Asistentes virtuales inteligentes que entienden el contexto y resuelven consultas complejas automáticamente.",
-            image: supportImg, // Reusing support image as placeholder/relevant image
-            delay: "50ms"
+            image: supportImg,
+            delay: "50ms",
+            href: "https://wa.me/56942138814"
         },
         {
             title: "Ventas y Lead Nurturing",
             description: "Identifica prospectos, califica leads y personaliza ofertas para maximizar tus conversiones y cerrar más ventas.",
             image: salesImg,
-            delay: "100ms"
+            delay: "100ms",
+            href: "https://wa.me/56942138814"
         },
         {
             title: "Automatización (RPA)",
             description: "Optimiza tareas repetitivas, gestiona datos y coordina flujos de trabajo internos, aumentando la eficiencia operativa.",
             image: rpaImg,
-            delay: "200ms"
+            delay: "200ms",
+            href: "https://wa.me/56942138814"
         },
         {
             title: "Análisis y Estrategia",
             description: "Convierte datos complejos en insights accionables, predice tendencias y optimiza decisiones estratégicas.",
             image: analyticsImg,
-            delay: "300ms"
+            delay: "300ms",
+            href: "https://wa.me/56942138814"
         }
     ];
 

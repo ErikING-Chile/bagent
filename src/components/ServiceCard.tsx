@@ -6,12 +6,21 @@ interface ServiceCardProps {
     description: string;
     image: string;
     delay?: string;
+    href?: string;
 }
 
-const ServiceCard = ({ title, description, image, delay = '0ms' }: ServiceCardProps) => {
+const ServiceCard = ({ title, description, image, delay = '0ms', href }: ServiceCardProps) => {
+    const Component = href ? 'a' : 'div';
+    const linkProps = href ? {
+        href,
+        target: "_blank",
+        rel: "noopener noreferrer"
+    } : {};
+
     return (
-        <div
-            className="group relative h-full bg-white/5 border border-white/10 rounded-3xl overflow-hidden transition-all duration-300 hover:border-brand-purple/50 hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] hover:-translate-y-2"
+        <Component
+            {...linkProps}
+            className="group relative h-full bg-white/5 border border-white/10 rounded-3xl overflow-hidden transition-all duration-300 hover:border-brand-purple/50 hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] hover:-translate-y-2 block"
             style={{ animationDelay: delay }}
         >
             <div className="absolute inset-0 bg-gradient-to-b from-brand-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -37,7 +46,7 @@ const ServiceCard = ({ title, description, image, delay = '0ms' }: ServiceCardPr
                     Más información <ArrowUpRight className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </div>
             </div>
-        </div>
+        </Component>
     );
 };
 
