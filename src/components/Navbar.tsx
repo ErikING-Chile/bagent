@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Bot, Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -19,12 +20,12 @@ const Navbar = () => {
                 }`}
         >
             <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-                <div className="flex items-center gap-2">
+                <Link to="/" className="flex items-center gap-2">
                     <Bot className="w-8 h-8 text-brand-cyan" />
                     <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
                         BAGENTS
                     </span>
-                </div>
+                </Link>
 
                 <div className="hidden md:flex items-center gap-8">
                     {/* Links removed for cleaner look */}

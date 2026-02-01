@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom';
 import { Bot, Twitter } from 'lucide-react';
 
 const Footer = () => {
@@ -19,17 +19,17 @@ const Footer = () => {
                     <div>
                         <h4 className="text-white font-bold mb-6">Soluciones</h4>
                         <ul className="space-y-4 text-gray-400">
-                            <li><a href="#" className="hover:text-brand-cyan transition-colors">Atención al Cliente</a></li>
-                            <li><a href="#" className="hover:text-brand-cyan transition-colors">Ventas Automatizadas</a></li>
-                            <li><a href="#" className="hover:text-brand-cyan transition-colors">Análisis de Datos</a></li>
-                            <li><a href="#" className="hover:text-brand-cyan transition-colors">RPA</a></li>
+                            <li><Link to="/atencion-cliente" className="hover:text-brand-cyan transition-colors">Atención al Cliente</Link></li>
+                            <li><Link to="/agentes-ventas" className="hover:text-brand-cyan transition-colors">Ventas Automatizadas</Link></li>
+                            <li><Link to="/agentes-soporte" className="hover:text-brand-cyan transition-colors">Soporte Técnico</Link></li>
+                            <li><Link to="/automatizacion-whatsapp" className="hover:text-brand-cyan transition-colors">Automatización WhatsApp</Link></li>
                         </ul>
                     </div>
 
                     <div>
                         <h4 className="text-white font-bold mb-6">Compañía</h4>
                         <ul className="space-y-4 text-gray-400">
-                            <li><a href="#" className="hover:text-brand-cyan transition-colors">Sobre Nosotros</a></li>
+                            <li><Link to="/sobre-nosotros" className="hover:text-brand-cyan transition-colors">Sobre Nosotros</Link></li>
                             <li><a href="#" className="hover:text-brand-cyan transition-colors">Blog</a></li>
                             <li><a href="#" className="hover:text-brand-cyan transition-colors">Carreras</a></li>
                             <li><a href="#" className="hover:text-brand-cyan transition-colors">Contacto</a></li>
