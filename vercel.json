@@ -1,0 +1,15 @@
+{
+    "redirects": [
+        {
+            "source": "/(.*)",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "bagent.vercel.app"
+                }
+            ],
+            "destination": "https://bagent.cl/$1",
+            "permanent": true
+        }
+    ]
+}
