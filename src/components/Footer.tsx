@@ -1,5 +1,5 @@
 
-import { Bot, Github, Twitter, Linkedin } from 'lucide-react';
+import { Bot, Twitter } from 'lucide-react';
 
 const Footer = () => {
     return (
@@ -43,9 +43,7 @@ const Footer = () => {
                     </p>
 
                     <div className="flex items-center gap-6">
-                        <a href="#" className="text-gray-400 hover:text-white transition-colors"><Twitter className="w-5 h-5" /></a>
-                        <a href="#" className="text-gray-400 hover:text-white transition-colors"><Github className="w-5 h-5" /></a>
-                        <a href="#" className="text-gray-400 hover:text-white transition-colors"><Linkedin className="w-5 h-5" /></a>
+                        <a href="https://x.com/bagentai" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors"><Twitter className="w-5 h-5" /></a>
                     </div>
                 </div>
             </div>

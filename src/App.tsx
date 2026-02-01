@@ -15,7 +15,7 @@ function App() {
       <Helmet>
         <title>Bagent | Agentes de IA para tu negocio</title>
         <meta name="description" content="Automatiza ventas, soporte y tareas repetitivas con agentes de IA listos para producción." />
-        <link rel="canonical" href="https://bagent.cl/" />
+        <link rel="canonical" href="https://www.bagent.cl/" />
       </Helmet>
       <Navbar />
       <main>
