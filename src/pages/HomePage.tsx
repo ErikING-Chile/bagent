@@ -4,7 +4,6 @@ import ArchitectureSection from '../components/ArchitectureSection';
 import Services from '../components/Services';
 import FeatureShowcase from '../components/FeatureShowcase';
 import QuizSection from '../components/QuizSection';
-import DemoSection from '../components/DemoSection';
 import CTA from '../components/CTA';
 
 const HomePage = () => {
@@ -20,7 +19,6 @@ const HomePage = () => {
             <QuizSection />
             <Services />
             <FeatureShowcase />
-            <DemoSection />
             <CTA />
         </>
     );
