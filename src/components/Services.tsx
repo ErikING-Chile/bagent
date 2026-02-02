@@ -4,6 +4,7 @@ import supportImg from '../assets/support.png';
 import salesImg from '../assets/sales.png';
 import rpaImg from '../assets/rpa.png';
 import analyticsImg from '../assets/analytics.png';
+import chatbotAiImg from '../assets/chatbot_ai.png';
 
 const Services = () => {
     const services = [
@@ -17,7 +18,7 @@ const Services = () => {
         {
             title: "Chatbots con IA",
             description: "Asistentes virtuales inteligentes que entienden el contexto y resuelven consultas complejas automáticamente.",
-            image: supportImg,
+            image: chatbotAiImg,
             delay: "50ms",
             href: "https://wa.me/56942138814"
         },
