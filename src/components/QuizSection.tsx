@@ -6,8 +6,32 @@ const QuizSection = () => {
     const [step, setStep] = useState(1);
     const [answers, setAnswers] = useState<{ challenge: string; channels: string[] }>({
         challenge: '',
-        channels: []
     });
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        company: ''
+    });
+
+    const handleFormSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        const subject = encodeURIComponent(`Solicitud de Diagnóstico: ${formData.company}`);
+        const body = encodeURIComponent(`Hola Erik,
+
+Me gustaría recibir mi diagnóstico de agente IA.
+
+Mis datos:
+Nombre: ${formData.name}
+Correo: ${formData.email}
+Empresa: ${formData.company}
+
+Resultados del Quiz:
+Desafío Principal: ${answers.challenge}
+Canales Preferidos: ${answers.channels.join(', ')}
+
+Saludos.`);
+        window.location.href = `mailto:erik@bagent.cl?subject=${subject}&body=${body}`;
+    };
 
     const handleChallengeSelect = (challenge: string) => {
         setAnswers({ ...answers, challenge });
@@ -160,15 +184,36 @@ const QuizSection = () => {
                                             <p className="text-sm text-gray-400">Te enviaremos el plan de implementación detallado.</p>
                                         </div>
 
-                                        <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                                        <form className="space-y-4" onSubmit={handleFormSubmit}>
                                             <div>
-                                                <input type="text" placeholder="Nombre completo" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-purple transition-colors" />
+                                                <input
+                                                    type="text"
+                                                    placeholder="Nombre completo"
+                                                    required
+                                                    value={formData.name}
+                                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                                    className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-purple transition-colors"
+                                                />
                                             </div>
                                             <div>
-                                                <input type="email" placeholder="Correo corporativo" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-purple transition-colors" />
+                                                <input
+                                                    type="email"
+                                                    placeholder="Correo corporativo"
+                                                    required
+                                                    value={formData.email}
+                                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                                    className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-purple transition-colors"
+                                                />
                                             </div>
                                             <div>
-                                                <input type="text" placeholder="Empresa" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-purple transition-colors" />
+                                                <input
+                                                    type="text"
+                                                    placeholder="Empresa"
+                                                    required
+                                                    value={formData.company}
+                                                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                                                    className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-purple transition-colors"
+                                                />
                                             </div>
                                             <button className="w-full bg-gradient-to-r from-brand-purple to-brand-cyan text-white font-bold py-3 rounded-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all hover:scale-[1.02]">
                                                 Recibir mi Diagnóstico
@@ -195,9 +240,14 @@ const QuizSection = () => {
                                             >
                                                 <MessageSquare className="w-5 h-5" /> Hablar por WhatsApp
                                             </a>
-                                            <button className="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium py-3 rounded-lg transition-all">
+                                            <a
+                                                href="https://outlook.office.com/bookwithme/user/8b9677936d624e0399e5b074d333b4d8@bagent.cl?anonymous&ep=plink"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium py-3 rounded-lg transition-all block text-center"
+                                            >
                                                 Agendar 15 min
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
