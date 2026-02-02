@@ -6,6 +6,7 @@ const QuizSection = () => {
     const [step, setStep] = useState(1);
     const [answers, setAnswers] = useState<{ challenge: string; channels: string[] }>({
         challenge: '',
+        channels: []
     });
     const [formData, setFormData] = useState({
         name: '',
