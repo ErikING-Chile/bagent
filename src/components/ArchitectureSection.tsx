@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
     MessageCircle,
     Share2,
@@ -117,7 +117,7 @@ const ArchitectureSection = () => {
                         {/* Connecting Line (Desktop) */}
                         <div className="hidden lg:block absolute left-[30px] top-8 bottom-8 w-0.5 bg-gradient-to-b from-brand-cyan/20 via-brand-purple/20 to-brand-pink/20" />
 
-                        {Object.values(blocks).map((block, index) => {
+                        {Object.values(blocks).map((block) => {
                             const Icon = block.icon;
                             const isSelected = selectedBlock === block.id;
 
