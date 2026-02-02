@@ -5,6 +5,7 @@ import salesImg from '../assets/sales.png';
 import rpaImg from '../assets/rpa.png';
 import analyticsImg from '../assets/analytics.png';
 import chatbotAiImg from '../assets/chatbot_ai.png';
+import microsoftCopilotImg from '../assets/microsoft_copilot.png';
 
 const Services = () => {
     const services = [
@@ -41,6 +42,13 @@ const Services = () => {
             description: "Convierte datos complejos en insights accionables, predice tendencias y optimiza decisiones estratégicas.",
             image: analyticsImg,
             delay: "300ms",
+            href: "https://wa.me/56942138814"
+        },
+        {
+            title: "Agentes con Microsoft Copilot",
+            description: "Integra la potencia de Microsoft Copilot en tus flujos de trabajo empresariales para una colaboración sin fisuras.",
+            image: microsoftCopilotImg,
+            delay: "400ms",
             href: "https://wa.me/56942138814"
         }
     ];
