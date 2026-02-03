@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ChevronRight, MessageSquare, Zap, BarChart3, Users, Mail, Globe, Lock } from 'lucide-react';
+import { Check, ChevronRight, MessageSquare, Zap, BarChart3, Users, Mail, Globe, Lock, Loader2 } from 'lucide-react';
+import { supabase } from '../lib/supabaseClient';
 
 const QuizSection = () => {
     const [step, setStep] = useState(1);
@@ -13,25 +14,38 @@ const QuizSection = () => {
         email: '',
         company: ''
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-    const handleFormSubmit = (e: React.FormEvent) => {
+    const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const subject = encodeURIComponent(`Solicitud de Diagnóstico: ${formData.company}`);
-        const body = encodeURIComponent(`Hola Erik,
+        setIsSubmitting(true);
+        setSubmitStatus('idle');
 
-Me gustaría recibir mi diagnóstico de agente IA.
+        try {
+            const { error } = await supabase
+                .from('leads')
+                .insert([
+                    {
+                        name: formData.name,
+                        email: formData.email,
+                        company: formData.company,
+                        challenge: answers.challenge,
+                        channels: answers.channels,
+                        status: 'new'
+                    }
+                ]);
 
-Mis datos:
-Nombre: ${formData.name}
-Correo: ${formData.email}
-Empresa: ${formData.company}
+            if (error) throw error;
 
-Resultados del Quiz:
-Desafío Principal: ${answers.challenge}
-Canales Preferidos: ${answers.channels.join(', ')}
-
-Saludos.`);
-        window.location.href = `mailto:erik@bagent.cl?subject=${subject}&body=${body}`;
+            setSubmitStatus('success');
+            setFormData({ name: '', email: '', company: '' });
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            setSubmitStatus('error');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleChallengeSelect = (challenge: string) => {
@@ -185,41 +199,75 @@ Saludos.`);
                                             <p className="text-sm text-gray-400">Te enviaremos el plan de implementación detallado.</p>
                                         </div>
 
-                                        <form className="space-y-4" onSubmit={handleFormSubmit}>
-                                            <div>
-                                                <input
-                                                    type="text"
-                                                    placeholder="Nombre completo"
-                                                    required
-                                                    value={formData.name}
-                                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                                    className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-purple transition-colors"
-                                                />
+                                        {submitStatus === 'success' ? (
+                                            <div className="text-center py-8">
+                                                <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-green-400">
+                                                    <Check className="w-8 h-8" />
+                                                </div>
+                                                <h4 className="text-xl font-bold text-white mb-2">¡Solicitud Recibida!</h4>
+                                                <p className="text-gray-400 mb-6">Hemos guardado tus datos correctamente. Te contactaremos pronto con tu diagnóstico.</p>
+                                                <button
+                                                    onClick={() => setSubmitStatus('idle')}
+                                                    className="text-brand-cyan hover:text-brand-purple transition-colors"
+                                                >
+                                                    Enviar otra solicitud
+                                                </button>
                                             </div>
-                                            <div>
-                                                <input
-                                                    type="email"
-                                                    placeholder="Correo corporativo"
-                                                    required
-                                                    value={formData.email}
-                                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                                    className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-purple transition-colors"
-                                                />
-                                            </div>
-                                            <div>
-                                                <input
-                                                    type="text"
-                                                    placeholder="Empresa"
-                                                    required
-                                                    value={formData.company}
-                                                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                                                    className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-purple transition-colors"
-                                                />
-                                            </div>
-                                            <button className="w-full bg-gradient-to-r from-brand-purple to-brand-cyan text-white font-bold py-3 rounded-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all hover:scale-[1.02]">
-                                                Recibir mi Diagnóstico
-                                            </button>
-                                        </form>
+                                        ) : (
+                                            <form className="space-y-4" onSubmit={handleFormSubmit}>
+                                                <div>
+                                                    <input
+                                                        type="text"
+                                                        placeholder="Nombre completo"
+                                                        required
+                                                        value={formData.name}
+                                                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                                        disabled={isSubmitting}
+                                                        className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-purple transition-colors disabled:opacity-50"
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <input
+                                                        type="email"
+                                                        placeholder="Correo corporativo"
+                                                        required
+                                                        value={formData.email}
+                                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                                        disabled={isSubmitting}
+                                                        className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-purple transition-colors disabled:opacity-50"
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <input
+                                                        type="text"
+                                                        placeholder="Empresa"
+                                                        required
+                                                        value={formData.company}
+                                                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                                                        disabled={isSubmitting}
+                                                        className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-purple transition-colors disabled:opacity-50"
+                                                    />
+                                                </div>
+                                                {submitStatus === 'error' && (
+                                                    <div className="text-red-400 text-sm text-center">
+                                                        Hubo un error al enviar el formulario. Por favor intenta de nuevo.
+                                                    </div>
+                                                )}
+                                                <button
+                                                    disabled={isSubmitting}
+                                                    className="w-full bg-gradient-to-r from-brand-purple to-brand-cyan text-white font-bold py-3 rounded-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all hover:scale-[1.02] disabled:opacity-70 disabled:cursor-wait flex items-center justify-center gap-2"
+                                                >
+                                                    {isSubmitting ? (
+                                                        <>
+                                                            <Loader2 className="w-5 h-5 animate-spin" />
+                                                            Enviando...
+                                                        </>
+                                                    ) : (
+                                                        'Recibir mi Diagnóstico'
+                                                    )}
+                                                </button>
+                                            </form>
+                                        )}
                                     </div>
 
                                     {/* Path 2: Fast Action */}
