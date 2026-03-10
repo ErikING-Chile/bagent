@@ -1,6 +1,5 @@
 import { Helmet } from 'react-helmet-async';
 import Hero from '../components/Hero';
-import ArchitectureSection from '../components/ArchitectureSection';
 import Services from '../components/Services';
 import QuizSection from '../components/QuizSection';
 import CTA from '../components/CTA';
@@ -14,9 +13,8 @@ const HomePage = () => {
                 <link rel="canonical" href="https://www.bagent.cl/" />
             </Helmet>
             <Hero />
-            <ArchitectureSection />
-            <QuizSection />
             <Services />
+            <QuizSection />
             <CTA />
         </>
     );
